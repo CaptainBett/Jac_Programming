@@ -1,74 +1,76 @@
-Project: Simple Rectangle Area Calculator
-This project demonstrates the core differences in object definition between Python and Jaclang by implementing a simple program that calculates the area of a rectangle.
+Simple Rectangle Area Calculator
+This project provides a side-by-side comparison of a basic Object-Oriented Program (OOP) in Python and its equivalent implementation in the Jaclang language. It demonstrates how to calculate the area of a rectangle, highlighting the core syntax differences between the two.
 
-Python Implementation (python_rectangle.py)
-This is the standard Object-Oriented Programming (OOP) approach in Python.
+🐍 Python Implementation (python_rectangle.py)
+This is the standard, well-known approach to defining classes and objects in Python.
 
 Code
-Python
-
 # python_rectangle.py
+
+# A class is a blueprint for creating objects.
 class Rectangle:
-    # The standard way to define properties (fields) and initialize them
+    # The special '__init__' method is a constructor that is called
+    # when a new Rectangle object is created.
     def __init__(self, width, height):
+        # 'self' refers to the instance of the object itself.
         self.width = width
         self.height = height
 
-    # Method (function inside the class) to calculate the area
+    # A method is a function that belongs to a class.
     def calculate_area(self):
+        # It uses the object's properties to perform a calculation.
         return self.width * self.height
 
 # --- Program Execution Starts Here ---
-# 1. Create a new Rectangle object
+# 1. Create a new Rectangle object with a width of 10 and height of 5.
 my_rect = Rectangle(width=10, height=5)
 
-# 2. Call the method and print the result
+# 2. Call the 'calculate_area' method and print the result.
 area = my_rect.calculate_area()
 print(f"The area is: {area}")
+# Expected Output: The area is: 50
+
 Key Python Concepts
-class: Used to define the blueprint for an object.
+class: The keyword used to define a class.
 
-__init__: The special constructor method used to set up the object's initial values (width and height).
+__init__: The required constructor method for initializing object properties.
 
-self: Must be explicitly passed as the first argument to methods to refer to the object itself.
+self: The explicit reference to the current object instance within a method.
 
 ✨ Jaclang Implementation (jac_rectangle.jac)
-This version is a direct translation into Jaclang, highlighting the simplified syntax and structure.
+Jaclang is a superset of Python that offers a cleaner, more streamlined syntax for the same logic.
 
 Code
-Code snippet
-
 # jac_rectangle.jac
-# Jac uses a semicolon (;) to end statements.
 
+# In Jaclang, 'obj' is used instead of 'class'.
 obj Rectangle {
-    # 'has' is the Jac way to declare properties and their data types (e.g., int).
-    # This replaces the need for the __init__ method for simple field initialization.
+    # The 'has' keyword declares properties and their types,
+    # making the code more concise than using __init__.
     has width: int, height: int;
     
-    # Methods are cleaner; 'self' is not required in the definition.
+    # Methods are simpler as 'self' is not required in the signature.
     def calculate_area {
+        # 'self' is still used to access the object's properties.
         return self.width * self.height;
     }
 }
 
-# The entry point for running the program
-# This replaces Python's standard `if __name__ == "__main__"` block.
+# The 'with entry' block is where the program execution begins.
 with entry {
-    # 1. Create a new Rectangle object (Jac automatically handles initialization)
+    # 1. Create a new Rectangle object. The 'has' statement handles initialization.
     my_rect = Rectangle(width=10, height=5);
     
-    # 2. Call the method and print the result
-    # Parentheses are optional when calling methods with no parameters.
+    # 2. Call the method. Parentheses can be omitted for methods with no arguments.
     area = my_rect.calculate_area; 
     print(f"The area is: {area}");
 }
+
 Key Jaclang Concepts
-obj: Used instead of class to define an object.
+obj: The keyword used to define an object, replacing class.
 
-has: A simplified way to define an object's fields and their types, handling much of the initialization logic automatically.
+has: A streamlined way to declare object properties and their types, which implicitly handles initialization.
 
-Simplified Methods: The self parameter is omitted in the method signature (def calculate_area).
+Simplified Methods: Methods do not require the explicit self parameter in the definition.
 
-with entry: The defined block where the program execution begins.
-
+with entry: The designated block where the program begins its execution.
